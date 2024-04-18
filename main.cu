@@ -37,8 +37,8 @@ __global__ void render(vec3 *fb, int max_x, int max_y,
 }
 
 int main(int argc, char **argv) {
-    int nx = 3840;
-    int ny = 2160;
+    int nx = atoi(argv[1]);
+    int ny = atoi(argv[2]);
     int tx = 8;
     int ty = 8;
 
@@ -75,7 +75,8 @@ int main(int argc, char **argv) {
     std::clog << "Sending Image to the file\n";
     start = clock();
     // Open the output file stream
-    std::ofstream outfile("output.ppm");
+    std::string output = std::string(argv[3]) + ".ppm";
+    std::ofstream outfile(output);
     // Write the PPM header
     outfile << "P3\n" << nx << " " << ny << "\n255\n";
 
