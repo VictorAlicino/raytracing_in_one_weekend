@@ -14,6 +14,12 @@ public:
         return orig + t*dir;
     }
 
+    
+    __device__ vec3 point_at_parameter(float t) const { return A + t*B; }
+
+    vec3 A;
+    vec3 B;
+
 private:
     point3 orig;
     vec3 dir;
